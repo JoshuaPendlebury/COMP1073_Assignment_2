@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Assignment 2 Smoothie Machine | COMP1073 Client-Side JavaScript</title>
+    <meta name="robots" content="noindex, nofollow">
+	<link href="css/normalize.css" rel="stylesheet">
+	<link href="./css/style.css" rel="stylesheet">
+	<script src="./js/script.js" defer></script>
+</head>
+<body>
+    <main>
+        <div>
+            <form>
+                <div>
+                    <label for="flavour">Flavour: </label>
+                    <select id="flavour" name="flavour"></select>
+                    <p id="flavour-price"></p>
+                </div>
+                <div>
+                    <input type="radio" id="size-small" name="size" value="small" checked>
+                    <label for="size-small">Small</label>
+                    <input type="radio" id="size-medium" name="size" value="medium">
+                    <label for="size-medium">Medium</label>
+                    <input type="radio" id="size-large" name="size" value="large">
+                    <label for="size-large">Large</label>
+                    <p id="size-price"></p>
+                </div>
+                <p><input type="submit" value="Order"></p>
+            </form>
+        </div>
+        <div>
+            <p id="output"></p>
+        </div>
+    </main>
+</body>
+</html>
