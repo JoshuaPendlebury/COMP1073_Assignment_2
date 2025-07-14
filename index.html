@@ -13,19 +13,21 @@
         <form id="order-form">
             <div>
                 <h3>Customer Name</h3>
-                <input type="text" name="customer-name">
+                <input type="text" name="customer-name" placeholder="Your Name">
             </div>
             <div>
                 <h3>Size</h3>
-                <!-- Empty select element will be filled using JS -->
-                <select id="size-selector" name="size-selector" form="order-form"></select>
-                <label id="size-price" for="size-selector"></label>
+                <div id="size-selector-container">
+                    <!-- Empty select element will be filled using JS -->
+                    <select id="size-selector" name="size-selector" form="order-form"></select>
+                    <label id="size-price" for="size-selector"></label>
+                </div>
             </div>
             <div>
                 <h3>Flavour</h3>
                 <div id="flavour-select"></div>
             </div>
-            <p><input id="order-submit" type="submit" value="Order"></p>
+            <div id="submit-container"><input id="order-submit" type="submit" value="Order"></div>
         </form>
         <div id="receipts">
             <h3>Receipts</h3>
