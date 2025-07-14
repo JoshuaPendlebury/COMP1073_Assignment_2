@@ -42,8 +42,8 @@ class Smoothie{
     }
 
     /**
-     * 
-     * @param {Array} flavours 
+     * Uses Smoothie Classes attributes to return a HTMLElement that is to be displayed as a receipt 
+     *  
      * @returns {HTMLElement} The smoothie receipt to be placed in the HTML
      */
     serveOrder(){
@@ -60,7 +60,7 @@ class Smoothie{
 
         receipt.classList.add("receipt-container");
 
-        receiptTitle.textContent = `${capitalizeFirstOnly(this.name)}'s Order`;
+        receiptTitle.textContent = `${capitalizeFirstOnly(this.customer)}'s Order`;
         receiptTitle.classList.add("receipt-title");
 
         receiptSmoothieSize.textContent = `${capitalizeFirstOnly(this.size)} Smoothie`;
@@ -135,7 +135,7 @@ function selectorDisplayPrice(input, output, menu){
  * Fills an empty container element with checkboxes or radio buttons using a menu object
  * 
  * @param {HTMLElement} containerElem - A HTML element that will contain the generated checkboxes/radio buttons
- * @param {object} menu - An object that contains key value pairs of a String item name and a Number price e.g. "Strawberry": 0.19
+ * @param {object} menu - An object that contains key value pairs of a String key name and a Number price e.g. "Strawberry": 0.19
  * @param {string} classHTML - Optional: adds a class value to the new HTML element
  * @param {string} name - Optional: manually sets a name value for all the checkboxes generated
  * @param {boolean} isRadio - Optional: Makes the function generate radio buttons instead (Requires name parameter)
@@ -179,25 +179,31 @@ for(let size of Object.keys(sizeMenu)){
     addSelOption(sizeSelect, size);
 }
 
+// Displays the initial price beside the size selector
 selectorDisplayPrice(sizeSelect, sizePriceDisplay, sizeMenu)
 
-//flavourSelect.addEventListener("change", () => selectorDisplayPrice(flavourSelect, flavourPriceDisplay, flavourMenu));
+// Changes the price displayed beside the size selector when changed
 sizeSelect.addEventListener("change", () => selectorDisplayPrice(sizeSelect, sizePriceDisplay, sizeMenu));
 
-//document.getElementsByClassName(flavourClass).addEventListener("click")
 
+//Event listener function to handle the form submission
 orderSubmit.addEventListener("click", (e) => {
 
+    //Temp variables to handle the form data
     let customerName;
     let smoothieSize;
     let flavourList = [];
+
+    //Boolean to handle simple input validation
     let validInput = true;
 
+    //Getting the form data
     const orderData = new FormData(orderForm, orderSubmit);
     for (const [key, value] of orderData) {
         //console.log(`${key}: ${value}\n`);
 
         if(key === "customer-name"){
+            //Input validation for the name field (prevents empty string / null value)
             if(!value){
                 alert("You must input a name.")
                 validInput = false;
@@ -211,14 +217,18 @@ orderSubmit.addEventListener("click", (e) => {
             flavourList.push(key);
         }
     }
+    //Preventing the reload on the submit action
     e.preventDefault();
 
+    //Input validation for flavour checkboxes (Ensures at least one option is selected)
     if(flavourList.length < 1){
         alert("You must select at least 1 flavour.");
         validInput = false;
     }
+    //If no validation errors occurred create a new Smoothie object, run the serveOrder method, and append the returned receipt to the output
     if(validInput){
         let completeOrder = new Smoothie(customerName, flavourList, smoothieSize);
-        receiptOutput.append(completeOrder.serveOrder());
+        let newSmoothieReceipt = completeOrder.serveOrder();
+        receiptOutput.append(newSmoothieReceipt);
     }
 })
