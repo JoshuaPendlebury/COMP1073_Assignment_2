@@ -13,18 +13,14 @@
         <div>
             <form>
                 <div>
-                    <label for="flavour">Flavour: </label>
-                    <select id="flavour" name="flavour"></select>
-                    <p id="flavour-price"></p>
+                    <h3>Size</h3>
+                    <select id="size-selector" name="size-selector"></select>
+                    <label id="size-price" for="size-selector"></label>
                 </div>
                 <div>
-                    <input type="radio" id="size-small" name="size" value="small" checked>
-                    <label for="size-small">Small</label>
-                    <input type="radio" id="size-medium" name="size" value="medium">
-                    <label for="size-medium">Medium</label>
-                    <input type="radio" id="size-large" name="size" value="large">
-                    <label for="size-large">Large</label>
-                    <p id="size-price"></p>
+                    <h3>Flavour</h3>
+                    <div id="flavour-select"></div>
+                    <p id="flavour-price"></p>
                 </div>
                 <p><input type="submit" value="Order"></p>
             </form>
