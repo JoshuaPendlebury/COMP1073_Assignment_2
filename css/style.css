@@ -1,0 +1,83 @@
+li, ul{
+    list-style: none;
+}
+
+h3{
+    border-top: #222222 solid 1px;
+    border-bottom: #222222 solid 1px;
+    background-color: #298bee;
+    text-align: center;
+}
+
+body{
+    background-color: #6bffff;
+}
+
+#receipts{
+    margin: 0 auto;
+    border-top: #222222 solid 1px;
+    border-bottom: #222222 solid 1px;
+    background-color: #ffff40;
+}
+
+#flavour-select{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+#output{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+.receipt-container h4, .receipt-container p, .receipt-container ul{
+    margin: 0;
+}
+.receipt-container{
+    display: grid;
+    grid-template-areas: 
+        "title title"
+        "size basePrice"
+        "flavour addPrice"
+        "totalTitle total";
+    grid-template-columns: 1fr 1fr;
+    background-color: #f5f5f5;
+    padding: 3px;
+    border: #222222 solid 1px;
+}
+.receipt-title{
+    grid-area: title;
+}
+
+.receipt-size{
+    grid-area: size;
+}
+.receipt-size-price{
+    grid-area: basePrice;
+    text-align: end;
+}
+.receipt-flavours{
+    grid-area: flavour;
+}
+.receipt-flavours li{
+    list-style: "| ";
+}
+.receipt-flavours-price{
+    grid-area: addPrice;
+}
+.receipt-flavours-price li{
+    text-align: end;
+}
+.receipt-total-title{
+    grid-area: totalTitle;
+}
+.receipt-total-price{
+    grid-area: total;
+    text-align: end;
+}
+
+.receipt-total-title,.receipt-total-price{
+    border-top: #222222 solid 1px;
+}
