@@ -10,23 +10,26 @@
 </head>
 <body>
     <main>
-        <div>
-            <form>
-                <div>
-                    <h3>Size</h3>
-                    <select id="size-selector" name="size-selector"></select>
-                    <label id="size-price" for="size-selector"></label>
-                </div>
-                <div>
-                    <h3>Flavour</h3>
-                    <div id="flavour-select"></div>
-                    <p id="flavour-price"></p>
-                </div>
-                <p><input type="submit" value="Order"></p>
-            </form>
-        </div>
-        <div>
-            <p id="output"></p>
+        <form id="order-form">
+            <div>
+                <h3>Customer Name</h3>
+                <input type="text" name="customer-name">
+            </div>
+            <div>
+                <h3>Size</h3>
+                <!-- Empty select element will be filled using JS -->
+                <select id="size-selector" name="size-selector" form="order-form"></select>
+                <label id="size-price" for="size-selector"></label>
+            </div>
+            <div>
+                <h3>Flavour</h3>
+                <div id="flavour-select"></div>
+            </div>
+            <p><input id="order-submit" type="submit" value="Order"></p>
+        </form>
+        <div id="receipts">
+            <h3>Receipts</h3>
+            <div id="output"></div>
         </div>
     </main>
 </body>
